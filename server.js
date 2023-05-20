@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./Database/mongodbconnect');
 
-const port = 3000;
+const port = env.PORT || 3000;
 const app = express();
 
 app
