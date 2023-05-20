@@ -1,38 +1,46 @@
-GET http://localhost:3000 HTTP/1.1
 
-###
-GET https://three41-lesson1-2.onrender.com/games HTTP/1.1
+GET https://personalproject-o54j.onrender.com/games HTTP/1.1
 
 ###
 GET http://localhost:3000/games HTTP/1.1
 
-###
-GET http://localhost:3000/games/644ddf1b1295680505a6a584 HTTP/1.1
 
 ### Get contact by id
 
-GET https://three41-lesson1-2.onrender.com/games/644ddf1b1295680505a6a584 HTTP/1.1
+GET https://personalproject-o54j.onrender.com/games/644ddf1b1295680505a6a584 HTTP/1.1
 
 ### Create contact
 
-POST https://three41-lesson1-2.onrender.com/games HTTP/1.1
-content-type: application/json
+POST https://personalproject-o54j.onrender.com/games HTTP/1.1
 
+content-type: application/json
 {
-   
+    "title": "The Legend of Zelda",
+  "releasedate": "November 21, 1998",
+  "developer": "Nintendo",
+  "publisher": "Nintendo",
+  "rating": "E",
+  "played": "Yes",
+  "score": "10"
 }
 
 ### PUT contact
 
-PUT https://three41-lesson1-2.onrender.com/games/644ddf1b1295680505a6a584 HTTP/1.1
-content-type: application/json
+PUT https://personalproject-o54j.onrender.com/games/644ddf1b1295680505a6a584 HTTP/1.1
 
+content-type: application/json
 {
-    
+    "title": "Halo: Combat Evolved",
+  "releasedate": "November 11th 2001",
+  "developer": "Bungie",
+  "publisher": "Microsoft",
+  "rating": "M",
+  "played": "Yes",
+  "score": "10" 
 }
 
 ### DELETE contact
 
-DELETE https://three41-lesson1-2.onrender.com/games/645701d2714978172dcd6a43 HTTP/1.1
+DELETE https://personalproject-o54j.onrender.com/games/645701d2714978172dcd6a43 HTTP/1.1
 
 
