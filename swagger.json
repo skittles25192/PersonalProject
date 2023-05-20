@@ -5,7 +5,7 @@
     "description": "Temple API",
     "version": "1.0.0"
   },
-  "host": "three41-lesson1-2.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "https"
@@ -18,7 +18,7 @@
         "responses": {}
       }
     },
-    "/contacts/": {
+    "/games/": {
       "get": {
         "description": "",
         "produces": [
@@ -40,19 +40,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "title": {
                   "example": "any"
                 },
-                "lastName": {
+                "releasedate": {
                   "example": "any"
                 },
-                "email": {
+                "developer": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "publisher": {
                   "example": "any"
                 },
-                "birthday": {
+                "rating": {
+                  "example": "any"
+                },
+                "played": {
+                  "example": "any"
+                },
+                "score": {
                   "example": "any"
                 }
               }
@@ -69,7 +75,7 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/games/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -104,19 +110,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "title": {
                   "example": "any"
                 },
-                "lastName": {
+                "releasedate": {
                   "example": "any"
                 },
-                "email": {
+                "developer": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "publisher": {
                   "example": "any"
                 },
-                "birthday": {
+                "rating": {
+                  "example": "any"
+                },
+                "played": {
+                  "example": "any"
+                },
+                "score": {
                   "example": "any"
                 }
               }
