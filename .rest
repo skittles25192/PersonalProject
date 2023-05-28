@@ -15,7 +15,7 @@ POST https://personalproject-o54j.onrender.com/games HTTP/1.1
 
 content-type: application/json
 {
-    "title": "The Legend of Zelda",
+  "title": "The Legend of Zelda",
   "releasedate": "November 21, 1998",
   "developer": "Nintendo",
   "publisher": "Nintendo",
@@ -30,7 +30,7 @@ PUT https://personalproject-o54j.onrender.com/games/644ddf1b1295680505a6a584 HTT
 
 content-type: application/json
 {
-    "title": "Halo: Combat Evolved",
+  "title": "Halo: Combat Evolved",
   "releasedate": "November 11th 2001",
   "developer": "Bungie",
   "publisher": "Microsoft",

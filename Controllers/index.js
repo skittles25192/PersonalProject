@@ -2,22 +2,28 @@ const mongodb = require('../Database/mongodbconnect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
-  const result = await mongodb.getDb().db("Games").collection('games').find({});
+  mongodb.getDb().db("Games").collection('games').find({}).toArray((err, lists) => {
+    if (err) {
+      res.status(400).json({ message: err });
+    }
   console.log(result);
-  result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
   });
 };
 
-const getSingle = async (req, res, next) => {
+const getSingle = (req, res) => {
+
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid id to find a game.');
+  }
+
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb
-    .getDb()
-    .db("Games")
-    .collection('games')
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
+
+  mongodb.getDb().db("Games").collection('games').find({_id: userId}).toArray((err, lists) => {
+    if (err) {
+      res.status(400).json({ message: err });
+    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
   });
@@ -42,6 +48,9 @@ const createGame = async (req, res) => {
 };
 
 const updateGame = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid id to find a game.');
+  }
   const userId = new ObjectId(req.params.id);
   const game = {
     title: req.body.title,
@@ -62,6 +71,9 @@ const updateGame = async (req, res) => {
 };
 
 const deleteGame = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid id to find a game.');
+  }
   const userId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db("Games").collection('games').remove({ _id: userId }, true);
   console.log(response);
