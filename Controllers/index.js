@@ -2,7 +2,7 @@ const mongodb = require('../Database/mongodbconnect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
-  mongodb.getDb().db("Games").collection('games').find({}).toArray((err, lists) => {
+  await mongodb.getDb().db("Games").collection('games').find({}).toArray((err, lists) => {
     if (err) {
       res.status(400).json({ message: err });
     }
@@ -12,7 +12,7 @@ const getAll = async (req, res, next) => {
   });
 };
 
-const getSingle = (req, res) => {
+const getSingle = async (req, res) => {
 
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid id to find a game.');
@@ -20,7 +20,7 @@ const getSingle = (req, res) => {
 
   const userId = new ObjectId(req.params.id);
 
-  mongodb.getDb().db("Games").collection('games').find({_id: userId}).toArray((err, lists) => {
+  await mongodb.getDb().db("Games").collection('games').find({_id: userId}).toArray((err, lists) => {
     if (err) {
       res.status(400).json({ message: err });
     }
