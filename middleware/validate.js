@@ -2,11 +2,15 @@ const validator = require('../helpers/validate');
 
 const saveGame = (req, res, next) => {
   const validationRule = {
-    firstName: 'required|string',
-    lastName: 'required|string',
-    email: 'required|email',
-    favoriteColor: 'required|string',
-    birthday: 'string'
+    title: 'required|string',
+    releasedate: 'required|date',
+    developer: 'required|string',
+    publisher: 'required|string',
+    rating: 'required|string',
+    played: 'required|string',
+    score: 'string'
+
+
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
