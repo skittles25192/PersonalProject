@@ -1,9 +1,35 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { auth, requiresAuth } = require('express-openid-connect');
 const mongodb = require('./Database/mongodbconnect');
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+
+const { auth } = require('express-openid-connect');
+require('dotenv').config();
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.secret,
+  baseURL: process.env.PORT,
+  clientID: process.env.clientID,
+  issuerBaseURL: process.env.issuerBaseURL
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 app
   .use(bodyParser.json())
