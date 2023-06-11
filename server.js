@@ -11,7 +11,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.secret,
-  baseURL: process.env.PORT,
+  baseURL: process.env.baseURL,
   clientID: process.env.clientID,
   issuerBaseURL: process.env.issuerBaseURL
 };
